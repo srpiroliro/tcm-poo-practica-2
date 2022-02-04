@@ -53,17 +53,27 @@ public class Ubicacio {
 	}
 	
 	public boolean treureSenyal(SenyalTransit c) { // private or public?
-		if (numSenyals==MAX_SENYALS) return false;
 		for(int cnt=0;cnt<numSenyals; cnt++) {
 			if(String.equals(c.getCodi(), senyals[cnt].getCodi())) {  // or c.getCodi().equals(senyals[cnt].getCodi())
 				senyals[cnt]=null;
 				
+				for (int i=cnt; (i>0 && i<numSenyals);  i++) {
+					senyals[cnt]= (cnt+1==MAX_SENYALS) ? null : senyals[cnt+1] ;
+				}
 			};
 			cnt++;
 		}
 		
 		
 		return false;
+	}
+	
+	public String getSenyals() {
+		String msg="";
+		for(SenyalTransit senyal : senyals) {
+			msg+=senyal.getCodi()+" - ";
+		}
+		return msg;
 	}
 	
 	
