@@ -52,6 +52,9 @@ public class SenyalTransit {
 //			UBICACIO = novaUbicacio;
 //			return UBICACIO.treureSenyal(SenyalTransit);
 //		 }
+
+//		no tinc ni idea de si es aix� o no 
+
 		 return false;
 	}
 	
