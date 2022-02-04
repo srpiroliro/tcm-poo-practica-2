@@ -58,7 +58,7 @@ public class SenyalTransit {
 		 return false;
 	}
 	
-	public String getCODI() { return CODI;} // private o public	
+	public String getCodi() { return CODI;} // private o public	
 	
 	public Ubicacio getUBICACIO() {
 		if (ANY_COL != 0)
