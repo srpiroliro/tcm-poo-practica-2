@@ -52,7 +52,9 @@ public class SenyalTransit {
 //			UBICACIO = novaUbicacio;
 //			return UBICACIO.treureSenyal(SenyalTransit);
 //		 }
-//		no tinc ni idea de si es així o no 
+
+//		no tinc ni idea de si es aixï¿½ o no 
+
 		 return false;
 	}
 	
