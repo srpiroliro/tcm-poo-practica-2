@@ -25,7 +25,7 @@ public class Ubicacio {
 	public String getNomVia() {return(nom_via);}
 	public int getNumVia() {return(num_via);}
 	public boolean getCruilla() {return(cruilla);}
-	public SenyalTransit[] getSenyals() {return(senyals);}
+//	public SenyalTransit[] getSenyals() {return(senyals);}
 	public int getNumSenyals() {return(numSenyals);}
 	public int getMaxSenyals() {return(MAX_SENYALS);}
 	
@@ -43,7 +43,7 @@ public class Ubicacio {
 		int cnt=0; boolean trobat=false;
 		while (cnt<numSenyals) {
 			// comprova que ja no hi hagi una senyal igual a la llista. (no s’admeten repetits)
-			trobat=String.equals(c.getCodi(), senyals[cnt].getCodi()); // or c.getCodi().equals(senyals[cnt].getCodi())
+			trobat=String.equals(c.getCodi(), senyals[cnt].getCodi()) ; // or c.getCodi().equals(senyals[cnt].getCodi())
 			if(trobat) return false;
 			cnt++;
 		}
