@@ -17,7 +17,7 @@ public class SenyalTransit {
 		CODI = codi;
 		TIPUS = tipus;
 		UBICACIO = ubicacio;
-		ANY_COL = anyColocacio;s
+		ANY_COL = anyColocacio;
 	}
 	
 	public String getTipusSenyal() { // private o public
