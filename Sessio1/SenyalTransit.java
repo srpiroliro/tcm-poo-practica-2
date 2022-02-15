@@ -18,7 +18,6 @@ public class SenyalTransit {
 		TIPUS = tipus;
 		UBICACIO = ubicacio;
 		ANY_COL = anyColocacio;
-		
 		/*
 		   ** FALTA **
 			Aquest constructor ubica el senyal a la via pública indicada, ubicació donada en el tercer
@@ -27,6 +26,7 @@ public class SenyalTransit {
 			al dipòsit i l’any de retirada vindrà donat en el darrer paràmetre. En cas contrari, el darrer
 			paràmetre és l’any de col·locació.
 		 */
+
 	}
 	
 	public String getTipusSenyal() {
