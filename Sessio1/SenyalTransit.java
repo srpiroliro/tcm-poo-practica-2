@@ -9,7 +9,7 @@ public class SenyalTransit {
 	
 	private String CODI;
 	private int TIPUS;
-	Ubicacio UBICACIO;
+	private Ubicacio UBICACIO;
 	private int ANY_COL;
 	private int ANY_RET;
 	
@@ -17,14 +17,23 @@ public class SenyalTransit {
 		CODI = codi;
 		TIPUS = tipus;
 		UBICACIO = ubicacio;
-		ANY_COL = anyColocacio;s
+		ANY_COL = anyColocacio;
+		
+		/*
+		   ** FALTA **
+			Aquest constructor ubica el senyal a la via pública indicada, ubicació donada en el tercer
+			paràmetre. Si es dona el cas de què no és possible tal ubicació (mètode
+			afegirSenyal(SenyalTransit) retorna un fals), només en aquest cas, el senyal serà ubicat
+			al dipòsit i l’any de retirada vindrà donat en el darrer paràmetre. En cas contrari, el darrer
+			paràmetre és l’any de col·locació.
+		 */
 	}
 	
-	public String getTipusSenyal() { // private o public
+	public String getTipusSenyal() {
 		switch(TIPUS) {
-			case Advertencia: return "Advertencia";
-			case Reglamentacio: return "Reglamentacio";
-			case Indicacio: return "Indicacio";
+			case Advertencia: 	return "TRI";
+			case Reglamentacio: return "ROD";
+			case Indicacio: 	return "QUA";
 		}
 		return null;
 	}
@@ -58,11 +67,10 @@ public class SenyalTransit {
 		 return false;
 	}
 	
-	public String getCodi() { return CODI;} // private o public	
+	public String getCodi() {return CODI;}
 	
 	public Ubicacio getUBICACIO() {
-		if (ANY_COL != 0)
-			return UBICACIO;
+		if (ANY_COL != 0) return UBICACIO;
 		return null;
 	}
 	

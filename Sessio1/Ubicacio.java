@@ -31,9 +31,7 @@ public class Ubicacio {
 	public int getNumSenyals() {return(numSenyals);}
 	public int getMaxSenyals() {return(MAX_SENYALS);}
 	
-	public void setCruilla() {
-		cruilla=!cruilla;
-	}
+	public void setCruilla() { cruilla=!cruilla; }
 	
 	public SenyalTransit getSenyal(int quin) {
 		if (quin>=0 && quin<MAX_SENYALS && quin<numSenyals) return senyals[quin];
@@ -45,7 +43,7 @@ public class Ubicacio {
 		int cnt=0; boolean trobat=false;
 		while (cnt<numSenyals) {
 			// comprova que ja no hi hagi una senyal igual a la llista. (no s’admeten repetits)
-			trobat=String.equals(c.getCodi(), senyals[cnt].getCodi()) ; // or c.getCodi().equals(senyals[cnt].getCodi())
+			trobat=c.getCodi().equals(senyals[cnt].getCodi()) ; 
 			if(trobat) return false;
 			cnt++;
 		}
@@ -56,7 +54,7 @@ public class Ubicacio {
 	
 	public boolean treureSenyal(SenyalTransit c) { // private or public?
 		for(int cnt=0;cnt<numSenyals; cnt++) {
-			if(String.equals(c.getCodi(), senyals[cnt].getCodi())) {  // or c.getCodi().equals(senyals[cnt].getCodi())
+			if(c.getCodi().equals(senyals[cnt].getCodi())) {
 				senyals[cnt]=null;
 				
 				for (int i=cnt; (i>0 && i<numSenyals);  i++) {
@@ -65,20 +63,12 @@ public class Ubicacio {
 			};
 			cnt++;
 		}
-		
-		
 		return false;
 	}
 	
 	public String getSenyals() {
 		String msg="";
-		for(SenyalTransit senyal : senyals) {
-			msg+=senyal.getCodi()+" - ";
-		}
+		for(SenyalTransit senyal : senyals) msg+=senyal.getCodi()+" - "; // remove last " - "
 		return msg;
 	}
-	
-	
-	
-	
 }
