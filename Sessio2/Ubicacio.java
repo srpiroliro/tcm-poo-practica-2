@@ -1,6 +1,6 @@
 // hola
 
-package Sessio1;
+package Sessio2;
 
 public class Ubicacio {
 	private String nom_via; 	// Atr. 1

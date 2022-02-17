@@ -1,4 +1,4 @@
-package Sessio1;
+package Sessio2;
 import java.util.GregorianCalendar;
 
 public class SenyalTransit {
@@ -12,6 +12,28 @@ public class SenyalTransit {
 	private Ubicacio ubicacio;
 	private int any_col=0;
 	private int any_ret=0;
+	
+	public SenyalTransit(Ubicacio ubicacio) {
+		// generar random.
+		//this(ubicacio, tipus);
+	}
+	
+	public SenyalTransit(Ubicacio ubicacio, int tipus) {
+		// generar random.
+		//this(anyColocacio, ubicacio);
+	}
+	
+	public SenyalTransit(int anyColocacio, Ubicacio ubicacio) {
+		// generar random.
+		//this(codi, tipus, ubicacio, anyColocacio);
+	}
+	
+	/*
+		? ?
+	 		En la implementació d’aquests constructors és imprescindible que l’un cridi a l’altre amb
+			l’objectiu de reaprofitar codi, useu el this.
+		? ? 
+	 */
 	
 	public SenyalTransit(String codi, int tipus, Ubicacio ubicacio, int anyColocacio) {
 		this.codi = codi;
@@ -27,6 +49,7 @@ public class SenyalTransit {
 	}
 	
 	
+	
 	public boolean retirarViaPublica() { // private o public
 		if(ubicacio.treureSenyal(this)) { 
 			GregorianCalendar avui = new GregorianCalendar();
@@ -37,6 +60,25 @@ public class SenyalTransit {
 			return true;
 		}
 		return false;
+	}
+	public boolean retirarViaPublica(int anyRetirada) { // private o public
+		/*
+		 	Una sobrecarrega del mètode de la classe SenyalTransit que retira de la via pública un
+			senyal, el que tenim implementat obté l’any de retirada del sistema de l’ordinador, en
+			aquesta sobrecàrrega li vindrà donat en un paràmetre.
+			
+			==
+			
+			retirarViaPublica() but any_ret=anyRetirada ?
+		*/
+		
+		if(ubicacio.treureSenyal(this)) { 
+			any_ret=anyRetirada;
+			ubicacio=null;
+			
+			return true;
+		}
+		return false;		
 	}
 	
 	public boolean canviarUbicacio(Ubicacio novaUbicacio) { // private o public
@@ -51,13 +93,15 @@ public class SenyalTransit {
 	
 	
 	// GETs
-	public String getCodi() {return codi;}
-	public Ubicacio getUbicacio() { return ubicacio; } // nom en el doc: getAtribut3()
 	public String getStrUbicacio() { // private o public // nom en el doc: getUbicacio()
 		if(ubicacio != null)
 			return ubicacio.getNomVia() + ", " + ubicacio.getNumVia();
 		return null;
 	}
+	public Ubicacio getUbicacio() { // nom en el doc: getAtribut3()
+		return ubicacio;
+	}
+	
 	public String getTipusSenyal() {
 		switch(tipus) {
 			case Advertencia: 	return "Advertència";
@@ -66,6 +110,7 @@ public class SenyalTransit {
 		}
 		return null;
 	}
+	public String getCodi() {return codi;}
 	public String getEstat() {
 		GregorianCalendar avui = new GregorianCalendar();
 		switch(any_col - avui.get(1)) {
