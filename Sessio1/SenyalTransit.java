@@ -27,7 +27,7 @@ public class SenyalTransit {
 	}
 	
 	
-	public boolean retirarViaPublica() { // private o public
+	public boolean retirarViaPublica() {
 		if(ubicacio.treureSenyal(this)) { 
 			GregorianCalendar avui = new GregorianCalendar();
 			any_ret=avui.get(1);
@@ -39,7 +39,7 @@ public class SenyalTransit {
 		return false;
 	}
 	
-	public boolean canviarUbicacio(Ubicacio novaUbicacio) { // private o public
+	public boolean canviarUbicacio(Ubicacio novaUbicacio) { 
 		 if(novaUbicacio.afegirSenyal(this)){ 
 			ubicacio=novaUbicacio;
 			return ubicacio.treureSenyal(this);
