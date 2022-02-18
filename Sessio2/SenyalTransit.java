@@ -13,32 +13,27 @@ public class SenyalTransit {
 	private int any_col=0;
 	private int any_ret=0;
 	
-	
-	/*
-		? ?
-	 		En la implementació d’aquests constructors és imprescindible que l’un cridi a l’altre amb
-			l’objectiu de reaprofitar codi, useu el this.
-		? ? 
-	 */
-	
 	public SenyalTransit(Ubicacio ubicacio) {
-		// generar random.
-		//this(ubicacio, tipus);
+		this((new GregorianCalendar()).get(1), ubicacio);	
 	}
 	
 	public SenyalTransit(Ubicacio ubicacio, int tipus) {
-		// generar random.
-		//this(anyColocacio, ubicacio);
+		this(GenerarParametresSenyal.generarCodi(), tipus, ubicacio, GenerarParametresSenyal.generarAny((new GregorianCalendar()).get(1)));
+		
+		if(quinTipus(this.codi)!=tipus) {			
+			String[] c={"ROD","TRI",( Math.random()>0.5  ? "REC" : "QUA")};
+			this.codi=c[tipus]+this.codi.substring(3);
+		}
 	}
 	
 	public SenyalTransit(int anyColocacio, Ubicacio ubicacio) {
-		// generar random.
-		//this(codi, tipus, ubicacio, anyColocacio);
+		this(GenerarParametresSenyal.generarCodi(), 0, ubicacio, anyColocacio);
+		this.tipus=quinTipus(this.codi);
 	}
 	
 	public SenyalTransit(String codi, int tipus, Ubicacio ubicacio, int anyColocacio) {
 		this.codi = codi;
-		this.tipus = tipus;
+		this.tipus = tipus; 
 		
 		if (ubicacio.afegirSenyal(this)) {
 			this.ubicacio = ubicacio;
@@ -50,13 +45,18 @@ public class SenyalTransit {
 	}
 	
 	
+	private static int quinTipus(String codi) {
+		switch(codi.substring(0,4)) {
+		case "ROD": return Reglamentacio;
+		case "TRI": return Advertencia;
+		default: return Indicacio;
+		}
+	}
 	
 	
 	public boolean retirarViaPublica() {
 		if(ubicacio.treureSenyal(this)) { 
-			GregorianCalendar avui = new GregorianCalendar();
-			any_ret=avui.get(1);
-			
+			any_ret=(new GregorianCalendar()).get(1);
 			ubicacio=null;
 			
 			return true;
