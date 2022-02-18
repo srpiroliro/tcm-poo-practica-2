@@ -11,7 +11,6 @@ public class Poblacio {
 	private int numSenars;
 	private final int MAX_UBICACIONS; 
 	
-	
 	public Poblacio(int Maxim, String poblacio, int numHabitants) {
 		nomPoblacio=poblacio;
 		this.numHabitants=numHabitants;
@@ -21,8 +20,6 @@ public class Poblacio {
 		numSenars=0;
 		ubicacions=new Ubicacio[2][MAX_UBICACIONS];
 	}
-	
-	
 	
 	public boolean afegirUbicacio(Ubicacio c) {
 		int idx=c.getCruilla() ? 0 : 1;
@@ -46,7 +43,6 @@ public class Poblacio {
 		
 		return true;
 	}
-	
 	public boolean eliminarUbicacio(Ubicacio c) {
 		int idx=c.getCruilla() ? 0 : 1;
 		int llargada=(idx==1) ? numSenars : numParells;
@@ -72,7 +68,6 @@ public class Poblacio {
 		return false;
 		
 	}
-	
 	public int eliminarBuides() {
 		int cnt=0;
 		for(int x=0; x<ubicacions.length; x++) {
@@ -86,7 +81,6 @@ public class Poblacio {
 		
 		return cnt;
 	}
-
 	public int quantes() {
 		int cnt=0;
 		for(int x=0; x<ubicacions.length; x++) {
@@ -104,6 +98,4 @@ public class Poblacio {
 	public int getNumParells() {return numParells;}
 	public int getNumSenars() {return numSenars;}
 	public int getMaxUbicacions() {return MAX_UBICACIONS;}
-	
-	
 }

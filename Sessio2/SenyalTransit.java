@@ -49,8 +49,7 @@ public class SenyalTransit {
 	}
 	
 	
-	
-	public boolean retirarViaPublica() { // private o public
+	public boolean retirarViaPublica() {
 		if(ubicacio.treureSenyal(this)) { 
 			GregorianCalendar avui = new GregorianCalendar();
 			any_ret=avui.get(1);
@@ -61,17 +60,7 @@ public class SenyalTransit {
 		}
 		return false;
 	}
-	public boolean retirarViaPublica(int anyRetirada) { // private o public
-		/*
-		 	Una sobrecarrega del mètode de la classe SenyalTransit que retira de la via pública un
-			senyal, el que tenim implementat obté l’any de retirada del sistema de l’ordinador, en
-			aquesta sobrecàrrega li vindrà donat en un paràmetre.
-			
-			==
-			
-			retirarViaPublica() but any_ret=anyRetirada ?
-		*/
-		
+	public boolean retirarViaPublica(int anyRetirada) {
 		if(ubicacio.treureSenyal(this)) { 
 			any_ret=anyRetirada;
 			ubicacio=null;
@@ -80,8 +69,7 @@ public class SenyalTransit {
 		}
 		return false;		
 	}
-	
-	public boolean canviarUbicacio(Ubicacio novaUbicacio) { // private o public
+	public boolean canviarUbicacio(Ubicacio novaUbicacio) {
 		 if(novaUbicacio.afegirSenyal(this)){ 
 			ubicacio=novaUbicacio;
 			return ubicacio.treureSenyal(this);
@@ -91,9 +79,8 @@ public class SenyalTransit {
 	}
 	
 	
-	
 	// GETs
-	public String getStrUbicacio() { // private o public // nom en el doc: getUbicacio()
+	public String getStrUbicacio() {// nom en el doc: getUbicacio()
 		if(ubicacio != null)
 			return ubicacio.getNomVia() + ", " + ubicacio.getNumVia();
 		return null;

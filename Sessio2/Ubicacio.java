@@ -1,5 +1,3 @@
-// hola
-
 package Sessio2;
 
 public class Ubicacio {
