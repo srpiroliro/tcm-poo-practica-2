@@ -13,6 +13,14 @@ public class SenyalTransit {
 	private int any_col=0;
 	private int any_ret=0;
 	
+	
+	/*
+		? ?
+	 		En la implementació d’aquests constructors és imprescindible que l’un cridi a l’altre amb
+			l’objectiu de reaprofitar codi, useu el this.
+		? ? 
+	 */
+	
 	public SenyalTransit(Ubicacio ubicacio) {
 		// generar random.
 		//this(ubicacio, tipus);
@@ -28,13 +36,6 @@ public class SenyalTransit {
 		//this(codi, tipus, ubicacio, anyColocacio);
 	}
 	
-	/*
-		? ?
-	 		En la implementació d’aquests constructors és imprescindible que l’un cridi a l’altre amb
-			l’objectiu de reaprofitar codi, useu el this.
-		? ? 
-	 */
-	
 	public SenyalTransit(String codi, int tipus, Ubicacio ubicacio, int anyColocacio) {
 		this.codi = codi;
 		this.tipus = tipus;
@@ -47,6 +48,8 @@ public class SenyalTransit {
 			any_ret=anyColocacio;
 		}
 	}
+	
+	
 	
 	
 	public boolean retirarViaPublica() {
