@@ -12,7 +12,7 @@ public class GenerarParametresSenyal {
 	public static int generarAny(int maxim) {
 		// maxim inclusiu o exclusiu?
 		int minim=1980;
-		return( (int)(Math.random() * (maxim-minim))+minim ); // max. es exclusiu
+		return( (int)(Math.random() * (maxim+1-minim))+minim ); // max. es inclusiu
 	}
 	
 	public static char generarDigit() {
