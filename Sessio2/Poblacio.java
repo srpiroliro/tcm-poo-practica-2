@@ -20,7 +20,7 @@ public class Poblacio {
 	}
 	
 	public boolean afegirUbicacio(Ubicacio c) {
-		int idx=c.getCruilla() ? 0 : 1;
+		int idx=c.getCruilla() ? 0 : 1; // !!! - Cruilles/No cruilles
 		for (Ubicacio x: ubicacions[idx]) {
 			if(x.getNomVia().equals(c.getNomVia()) && x.getNumVia()==c.getNumVia()) 
 				return false;
@@ -37,12 +37,12 @@ public class Poblacio {
 		else numParells++;
 		
 		
-		// *1 = trobar solucio mes eficient si n'hi ha.
+		// *1 = trobar una solucio mes eficient.
 		
 		return true;
 	}
 	public boolean eliminarUbicacio(Ubicacio c) {
-		int idx=c.getCruilla() ? 0 : 1;
+		int idx=c.getCruilla() ? 0 : 1; // !!! -  Cruilles/No cruilles
 		int llargada=(idx==1) ? numSenars : numParells;
 
 		int cnt=0; boolean trobat=false; 
@@ -55,7 +55,8 @@ public class Poblacio {
 			ubicacions[idx][cnt-1]=null;
 			
 			// correcte?
-			for (int i=cnt-1; i<llargada-1; i++) ubicacions[idx][i]=ubicacions[idx][i+1]; 
+			for (int i=cnt-1; i<llargada-1; i++) 
+				ubicacions[idx][i]=ubicacions[idx][i+1]; 
 			
 			if (idx==1) numSenars--;
 			else numParells--;
@@ -68,11 +69,14 @@ public class Poblacio {
 	}
 	public int eliminarBuides() {
 		int cnt=0;
-		for(int x=0; x<ubicacions.length; x++) {
-			for (int y=0; y<ubicacions.length; x++) {
+		int lengths[]= {numParells, numSenars};
+		
+		for(int x=0; x<lengths.length; x++) {
+			for (int y=0; y<lengths[x]; y++) {
 				if (ubicacions[x][y].getNumSenyals()==0) {
-					eliminarUbicacio(ubicacions[x][y]);
-					cnt++;
+					if(eliminarUbicacio(ubicacions[x][y])) {
+						y--; cnt++;
+					}
 				}
 			}
 		}
@@ -81,8 +85,9 @@ public class Poblacio {
 	}
 	public int quantes() {
 		int cnt=0;
-		for(int x=0; x<ubicacions.length; x++) {
-			for (int y=0; y<ubicacions.length; x++) {
+		int lengths[]= {numParells, numSenars};
+		for(int x=0; x<lengths.length; x++) {
+			for (int y=0; y<lengths[x]; y++) {
 				cnt+=ubicacions[x][y].getNumSenyals();
 			}
 		}
