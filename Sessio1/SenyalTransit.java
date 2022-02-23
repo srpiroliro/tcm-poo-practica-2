@@ -66,10 +66,12 @@ public class SenyalTransit {
 		}
 		return null;
 	}
-	public String getEstat() {
-		GregorianCalendar avui = new GregorianCalendar();
-		switch(any_col - avui.get(1)) {
-			case 0:
+	
+	
+	public String getEstat() { // Sessio 2?
+		if (any_col==0) return "retirat";
+		switch(any_col - (new GregorianCalendar().get(1)) ) {
+			case 0: 
 			case 1: return "nou";
 			case 2:
 			case 3: return "semi nou";

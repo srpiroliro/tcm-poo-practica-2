@@ -1,7 +1,5 @@
 package Sessio2;
 
-import Sessio1.Ubicacio;
-
 public class Poblacio {
 	private String nomPoblacio;
 	private int numHabitants;

@@ -25,6 +25,11 @@ abstract class SenyalTransit {
 	public SenyalTransit(Ubicacio ubicacio) {
 		this((new GregorianCalendar()).get(1), ubicacio);	
 	}
+
+	public SenyalTransit(int anyColocacio, Ubicacio ubicacio) {
+		this(GenerarParametresSenyal.generarCodi(), 0, ubicacio, anyColocacio);
+		this.tipus=quinTipus(this.codi);
+	}
 	
 	public SenyalTransit(Ubicacio ubicacio, int tipus) {
 		this(GenerarParametresSenyal.generarCodi(), tipus, ubicacio, GenerarParametresSenyal.generarAny((new GregorianCalendar()).get(1)));
@@ -33,11 +38,6 @@ abstract class SenyalTransit {
 			String[] c={"ROD","TRI",( Math.random()>0.5  ? "REC" : "QUA")};
 			this.codi=c[tipus]+this.codi.substring(3);
 		}
-	}
-	
-	public SenyalTransit(int anyColocacio, Ubicacio ubicacio) {
-		this(GenerarParametresSenyal.generarCodi(), 0, ubicacio, anyColocacio);
-		this.tipus=quinTipus(this.codi);
 	}
 	
 	public SenyalTransit(String codi, int tipus, Ubicacio ubicacio, int anyColocacio) {
@@ -62,13 +62,7 @@ abstract class SenyalTransit {
 		}
 	}
 	public boolean retirarViaPublica() {
-		if(ubicacio.treureSenyal(this)) { 
-			any_ret=(new GregorianCalendar()).get(1);
-			ubicacio=null;
-			
-			return true;
-		}
-		return false;
+		return(retirarViaPublica((new GregorianCalendar()).get(1)));
 	}
 	public boolean retirarViaPublica(int anyRetirada) {
 		if(ubicacio.treureSenyal(this)) { 
