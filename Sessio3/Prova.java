@@ -21,12 +21,16 @@ public class Prova {
 			Ubicacio ubi=ubicacions[i%len_ubicacions];
 			String desc="descripcio de "+codi;
 			switch(codi.substring(0,3)) {
-			case "ROD": senyals[i]=new Reglamentacio(codi, ubi, any, desc); break;
-			case "TRI": senyals[i]=new Advertencia(codi, ubi, any, desc); break;
-			default: 	senyals[i]=new Indicacio(codi, ubi, any, desc); break;
+				case "ROD": senyals[i]=new Reglamentacio(codi, ubi, any, desc); break;
+				case "TRI": senyals[i]=new Advertencia(codi, ubi, any, desc); break;
+				default: 	senyals[i]=new Indicacio(codi, ubi, any, desc); break;
 			}
 		}
 		
+		visualitzaSenyals(senyals);
+		
+	}
+	private static void visualitzaSenyals(SenyalTransit [] senyals){
 		for(SenyalTransit senyal : senyals) {
 			senyal.visualitza();
 			System.out.println("Area: "+senyal.area()+" cm2");
@@ -34,4 +38,3 @@ public class Prova {
 		}
 	}
 }
-
