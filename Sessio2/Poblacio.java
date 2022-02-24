@@ -20,7 +20,7 @@ public class Poblacio {
 	}
 	
 	public boolean afegirUbicacio(Ubicacio c) {
-		int idx=c.getCruilla() ? 0 : 1; // !!! - Cruilles/No cruilles
+		int idx=c.getNumVia()%2==0 ? 0 : 1;
 		for (Ubicacio x: ubicacions[idx]) {
 			if(x.getNomVia().equals(c.getNomVia()) && x.getNumVia()==c.getNumVia()) 
 				return false;
@@ -42,7 +42,7 @@ public class Poblacio {
 		return true;
 	}
 	public boolean eliminarUbicacio(Ubicacio c) {
-		int idx=c.getCruilla() ? 0 : 1; // !!! -  Cruilles/No cruilles
+		int idx=c.getNumVia()%2==0 ? 0 : 1;
 		int llargada=(idx==1) ? numSenars : numParells;
 
 		int cnt=0; boolean trobat=false; 
