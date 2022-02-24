@@ -55,7 +55,7 @@ public abstract class SenyalTransit {
 	
 	
 	private int quinTipus(String codi) {
-		switch(codi.substring(0,4)) {
+		switch(codi.substring(0,3)) {
 		case "ROD": return Reglamentacio;
 		case "TRI": return Advertencia;
 		default: return Indicacio;

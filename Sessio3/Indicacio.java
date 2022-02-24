@@ -11,7 +11,7 @@ public class Indicacio extends SenyalTransit{
 		this(codi, ubicacio, anyColocacio, descripcio, Amplada, Alcada);
 	}
 	public Indicacio(String codi, Ubicacio ubicacio, int anyColocacio, String descripcio, int amplada, int alcada) {
-		super(codi, Advertencia, ubicacio, anyColocacio);
+		super(codi, Indicacio, ubicacio, anyColocacio);
 		
 		this.amplada=amplada;
 		this.alcada=alcada;
@@ -22,12 +22,10 @@ public class Indicacio extends SenyalTransit{
 	public void visualitza() {
 		super.visualitza();
 		System.out.println("Descripcio: "+significatSenyal);
-		System.out.println("Dimensions: (h x a) "+amplada+"x"+alcada);
+		System.out.println("Dimensions: "+amplada+"x"+alcada);
 	}
 	
-	public float area() {
-		return (amplada*alcada);
-	}
+	public float area() { return (amplada*alcada); }
 	
 	public String getSignificat() { return significatSenyal; }
 	public int getAmplada() { return amplada; }
