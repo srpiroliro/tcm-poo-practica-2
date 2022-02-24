@@ -1,7 +1,7 @@
 package Sessio3;
 import java.util.GregorianCalendar;
 
-abstract class SenyalTransit {
+public abstract class SenyalTransit {
 
 	public static final int Advertencia = 0;
 	public static final int Reglamentacio = 1;
@@ -54,13 +54,14 @@ abstract class SenyalTransit {
 	}
 	
 	
-	private static int quinTipus(String codi) {
+	private int quinTipus(String codi) {
 		switch(codi.substring(0,4)) {
 		case "ROD": return Reglamentacio;
 		case "TRI": return Advertencia;
 		default: return Indicacio;
 		}
 	}
+	
 	public boolean retirarViaPublica() {
 		return(retirarViaPublica((new GregorianCalendar()).get(1)));
 	}
@@ -84,7 +85,7 @@ abstract class SenyalTransit {
 	public void visualitza() {
 		String msg=
 				"Codi: "+codi +"\n" +
-				"Tipus: "+tipus+"\n" +
+				"Tipus: "+getTipusSenyal()+"\n" +
 				"Any colocacio: "+any_col+"\n" +
 				"Any retirada: "+any_ret+"\n" +
 				"Ubicacio: "+getStrUbicacio();
@@ -99,13 +100,12 @@ abstract class SenyalTransit {
 	// GETs
 	public String getStrUbicacio() {// nom en el doc: getUbicacio()
 		if(ubicacio != null)
-			return ubicacio.getNomVia() + ", " + ubicacio.getNumVia();
+			return ubicacio.getNomVia()+", "+ubicacio.getNumVia();
 		return null;
 	}
 	public Ubicacio getUbicacio() { // nom en el doc: getAtribut3()
 		return ubicacio;
 	}
-	
 	public String getTipusSenyal() {
 		switch(tipus) {
 			case Advertencia: 	return "Advertència";

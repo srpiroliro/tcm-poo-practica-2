@@ -2,37 +2,38 @@ package Sessio3;
 
 public class Prova {
 	public static void main(String[] args) {
-		SenyalTransit [] senyals = new SenyalTransit[30];
-		Ubicacio[] ubicacions=new Ubicacio[10];
+		int len_ubicacions=5;
+		int len_senyals=30;
+		int capacitat_ubicacio=5;
 		
-		for(int i=0; i<10; i++) ubicacions[i]=new Ubicacio(3, "via"+i, 1);
+		SenyalTransit [] senyals = new SenyalTransit[len_senyals];
+		Ubicacio[] ubicacions=new Ubicacio[len_ubicacions];
 		
-		
-		// Advertencia
-		for(int i=0; i<10; i++) {
-			senyals[i]=new Advertencia("TRI-"+(1000+i), ubicacions[i], 2022, "descripcio");
-			ubicacions[i].afegirSenyal(senyals[i]);
+		for(int i=0; i<len_ubicacions; i++) {
+			ubicacions[i]=new Ubicacio(capacitat_ubicacio, "via"+i, 1);
+			if ( (int)(Math.random()*4)==2 ) ubicacions[i].setCruilla(); // 1/3 de cada ubi sera cruilla
 		}
 		
-		
-		// Indicacio
-		for(int i=0; i<10; i++) {
-			senyals[i+10]=new Indicacio("REC-"+(1010+i), ubicacions[i], 2022, "descripcio");
-			ubicacions[i].afegirSenyal(senyals[i+10]);
+		int any=2022;
+		for(int i=0; i<senyals.length; i++) {
+			String codi=GenerarParametresSenyal.generarCodi();
+			Ubicacio ubi=ubicacions[i%len_ubicacions];
+			String desc="descripcio de "+codi;
+			
+			switch(codi.substring(0,4)) {
+			case "ROD": senyals[i]=new Reglamentacio(codi, ubi, any, desc);
+			case "TRI": senyals[i]=new Advertencia(codi, ubi, any, desc);
+			default: 	senyals[i]=new Indicacio(codi, ubi, any, desc);
+			}
+			
 		}
 		
-		
-		// Reglamentacio
-		for(int i=0; i<10; i++) {
-			senyals[i+20]=new Reglamentacio("ROD-"+(1020+i), ubicacions[i], 2022, "descripcio");
-			ubicacions[i].afegirSenyal(senyals[i+20]);
-		}
-		
-		System.out.println("\n\n");
-		
-		for(SenyalTransit senyal : senyals) {
-			senyal.visualitza();
-			System.out.println();
+		for(Ubicacio ubi : ubicacions) {
+			System.out.println("Carrer: "+ubi.getNomVia()+"\nNum: "+ubi.getNumVia()+"\nCruilla? "+( ubi.getCruilla() ? "Si" : "No" ) );
+			System.out.println("Num de senyals: "+ubi.getNumSenyals());
+			System.out.println("Senyals: "+ubi.getSenyals());
+			
+			System.out.println("");
 		}
 		
 	}

@@ -13,6 +13,7 @@ public class Reglamentacio extends SenyalTransit{
 		
 		this.diametre=diametre;
 		significatSenyal=descripcio;
+		cntReglamentacio++;
 	}
 	
 	public void visualitza() {
@@ -21,7 +22,7 @@ public class Reglamentacio extends SenyalTransit{
 		System.out.println("Diametre: "+diametre);
 	}
 	
-	public float area() { return (float) (Math.PI*Math.sqrt(diametre)); }
+	public float area() { return (float) (Math.PI*Math.pow(diametre/2, 2)); }
 	public String getSignificat() { return significatSenyal; }
 	public int getDiametre() { return diametre; }
 }

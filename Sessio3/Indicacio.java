@@ -16,6 +16,7 @@ public class Indicacio extends SenyalTransit{
 		this.amplada=amplada;
 		this.alcada=alcada;
 		significatSenyal=descripcio;
+		cntIndicacio++;
 	}
 	
 	public void visualitza() {

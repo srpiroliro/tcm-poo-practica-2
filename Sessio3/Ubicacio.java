@@ -62,8 +62,11 @@ public class Ubicacio {
 		return null;
 	}
 	public String getSenyals() {
-		String msg="";
-		for(SenyalTransit senyal : senyals) msg+=senyal.getCodi()+" - "; // remove last " - "
-		return msg;
+		String codis[]=new String[senyals.length];
+		for(int i=0; i<senyals.length; i++) {
+			if (senyals[i]!=null) codis[i]=senyals[i].getCodi();
+		}
+			
+		return String.join(" - ", codis);
 	}
 }
