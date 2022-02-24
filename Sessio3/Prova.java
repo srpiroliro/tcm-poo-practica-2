@@ -28,6 +28,7 @@ public class Prova {
 		}
 		
 		visualitzaSenyals(senyals);
+		visualtizaAdvertencia(senyals);
 		
 	}
 	private static void visualitzaSenyals(SenyalTransit [] senyals){
@@ -35,6 +36,16 @@ public class Prova {
 			senyal.visualitza();
 			System.out.println("Area: "+senyal.area()+" cm2");
 			System.out.println();
+		}
+	}
+	
+	private static void visualtizaAdvertencia(SenyalTransit [] senyals) {
+		for(SenyalTransit senyal : senyals) {
+			if(senyal instanceof Advertencia) {
+				senyal.visualitza();
+				System.out.println("Area: "+senyal.area()+" cm2");
+				System.out.println();
+			}
 		}
 	}
 }
